@@ -1,0 +1,28 @@
+int x=400;
+int y=300;
+
+void setup(){
+ size(800,600);
+}
+
+void draw() {
+ background(0);
+ ellipse(x,y,65,65);
+ noStroke();
+ fill(225,246,24);
+}
+
+void keyPressed() {
+ if (key=='a') {
+   x=x-4;
+ }
+  if (key=='d') {
+   x=x+4;
+ }
+  if (key=='w') {
+   y=y-4;
+ }
+  if (key=='s') {
+   y=y+4;
+ }
+}
