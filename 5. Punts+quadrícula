@@ -38,8 +38,8 @@ void draw (){
  fin1=fin2;
  fin2=temp;
  fill(255);
- for (int i=30; i<width; i= i +60) { 
- for (int j=30; j<height; j= j +60) {
+ for (int i=30; i<height; i= i +60) { 
+ for (int j=30; j<width; j= j +60) {
   stroke(255); 
   ellipse(j, i, 5, 5); 
 } 
