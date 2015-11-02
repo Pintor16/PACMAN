@@ -1,0 +1,112 @@
+//int[][] P=new int[9][13];
+int [] [] P= {    {1,1,1,1,1,1,1,1,1,1,1,0,0,0},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                  {1,1,1,1,1,1,1,1,1,1,1,1,1,1} };
+PImage fantasma;                  
+float inicio1=0.0;
+float fin1=PI*2;
+float inicio2=0.63;
+float fin2=5.61;
+float temp=0.0;
+float x=330;
+float y=150;
+int j = 0;
+int i = 0;
+float easing=0.10;
+float a=30;
+float b=30;
+int contador=0;
+
+void setup() {
+  size(840,600);
+  strokeWeight (3);
+  smooth ();
+  frameRate(7);
+                  
+  for (i=0; i < 9; i++) {
+  for (j=0; j < 13; j++) {
+   println( P[i][j]);
+   fill(255);
+ fantasma = loadImage("ghost.png");
+  }} 
+  }
+  
+  void draw() {
+    background(0);
+    textSize(20);
+text("Score "+contador,690,30);
+    image(fantasma,a,b);
+    float targetX= x;
+    float dx= targetX-a;
+    a +=dx*easing;    
+    float targetY = y;
+    float dy = targetY-b;
+    b += dy * easing;
+    if (a>840) {
+      a=0;}
+    if (a<0) {
+      a=840; }
+    if (b>600) {
+      b=0; }
+    if (b<0) {
+      b=600; }
+    noStroke();
+ fill(225,246,8);
+ arc (x,y, 50, 50, inicio1, fin1);
+ fill(0);
+ ellipse(x-9,y-9,10,10);
+ temp=inicio1;
+ inicio1=inicio2;
+ inicio2=temp;
+ temp=fin1;
+ fin1=fin2;
+ fin2=temp;
+ fill(255);
+     for (i = 0; i < 10; i++) {
+     for (j = 0; j < 14; j++) {
+     //println( P[i][j]);
+     
+  stroke(255); 
+   if(P[i][j]==1 && y==30+i*60 && x==30+j*60) {
+        contador=contador+1; }
+    if (contador>136) {
+      textSize(100);
+      text("Level Up",300,300);
+      
+    }
+    if (y==30+i*60 && x==30+j*60){
+     P[i][j]=0;
+     println(P[i][j]);}
+    if (P[i][j]==1) ellipse(30+j*60, 30+i*60, 5, 5);     
+} 
+} 
+  if (x > 840) {
+   x=30;  }
+  if (x<0) {
+    x=810;}    
+  if (y> 600) {
+    y=30;  }
+  if (y<0) {
+    y=570; }
+  }
+  void keyPressed() {
+ if (key=='a') {
+   x=x-60;
+ }
+  if (key=='d') {
+   x=x+60;
+ }
+  if (key=='w') {
+   y=y-60;
+ }
+  if (key=='s') {
+   y=y+60;
+ }
+}
